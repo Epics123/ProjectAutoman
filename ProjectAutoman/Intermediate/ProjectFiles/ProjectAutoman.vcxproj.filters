@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\..\ProjectAutoman.uproject" />
+    <Filter Include="Source">
+      <UniqueIdentifier>{33A5142A-578B-43C1-A542-3348588D4788}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\ProjectAutoman.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <None Include="..\..\Source\ProjectAutomanEditor.Target.cs">
+      <Filter>Source</Filter>
+    </None>
+    <Filter Include="Config">
+      <UniqueIdentifier>{66717823-C5A8-4F1E-AA3F-58D924A495B5}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Config\DefaultEditor.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEditorPerProjectUserSettings.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultEngine.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultGame.ini">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Config\DefaultInput.ini">
+      <Filter>Config</Filter>
+    </None>
+    <Filter Include="Source\ProjectAutoman">
+      <UniqueIdentifier>{6D9D146C-C3A5-4712-9BE4-D09FB9ECC654}</UniqueIdentifier>
+    </Filter>
+    <None Include="..\..\Source\ProjectAutoman\ProjectAutoman.Build.cs">
+      <Filter>Source\ProjectAutoman</Filter>
+    </None>
+    <ClCompile Include="..\..\Source\ProjectAutoman\ProjectAutoman.cpp">
+      <Filter>Source\ProjectAutoman</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\ProjectAutoman\ProjectAutoman.h">
+      <Filter>Source\ProjectAutoman</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\ProjectAutoman\ProjectAutomanCharacter.cpp">
+      <Filter>Source\ProjectAutoman</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\ProjectAutoman\ProjectAutomanCharacter.h">
+      <Filter>Source\ProjectAutoman</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Source\ProjectAutoman\ProjectAutomanGameMode.cpp">
+      <Filter>Source\ProjectAutoman</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\ProjectAutoman\ProjectAutomanGameMode.h">
+      <Filter>Source\ProjectAutoman</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Source\ProjectAutoman\PlayerCharacter.h">
+      <Filter>Source\ProjectAutoman</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Source\ProjectAutoman\PlayerCharacter.cpp">
+      <Filter>Source\ProjectAutoman</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
