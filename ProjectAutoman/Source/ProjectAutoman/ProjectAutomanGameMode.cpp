@@ -6,5 +6,5 @@
 AProjectAutomanGameMode::AProjectAutomanGameMode()
 {
 	// Set default pawn class to our character
-	DefaultPawnClass = APlayerCharacter::StaticClass();	
+	DefaultPawnClass = APlayerCharacter::StaticClass();
 }

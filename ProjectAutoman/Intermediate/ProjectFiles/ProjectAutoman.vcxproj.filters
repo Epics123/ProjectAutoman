@@ -3,7 +3,7 @@
   <ItemGroup>
     <None Include="..\..\ProjectAutoman.uproject" />
     <Filter Include="Source">
-      <UniqueIdentifier>{33A5142A-578B-43C1-A542-3348588D4788}</UniqueIdentifier>
+      <UniqueIdentifier>{DF3A4608-6247-4B73-B2FA-BB50247ADC12}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Source\ProjectAutoman.Target.cs">
       <Filter>Source</Filter>
@@ -12,7 +12,7 @@
       <Filter>Source</Filter>
     </None>
     <Filter Include="Config">
-      <UniqueIdentifier>{66717823-C5A8-4F1E-AA3F-58D924A495B5}</UniqueIdentifier>
+      <UniqueIdentifier>{E176BF56-CEE2-4BB8-A4DB-8430E14D5DD0}</UniqueIdentifier>
     </Filter>
     <None Include="..\..\Config\DefaultEditor.ini">
       <Filter>Config</Filter>
@@ -30,8 +30,14 @@
       <Filter>Config</Filter>
     </None>
     <Filter Include="Source\ProjectAutoman">
-      <UniqueIdentifier>{6D9D146C-C3A5-4712-9BE4-D09FB9ECC654}</UniqueIdentifier>
+      <UniqueIdentifier>{AD6DCCFC-DD40-42F7-A7C2-5D3408D07263}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\ProjectAutoman\PlayerCharacter.cpp">
+      <Filter>Source\ProjectAutoman</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\ProjectAutoman\PlayerCharacter.h">
+      <Filter>Source\ProjectAutoman</Filter>
+    </ClInclude>
     <None Include="..\..\Source\ProjectAutoman\ProjectAutoman.Build.cs">
       <Filter>Source\ProjectAutoman</Filter>
     </None>
@@ -53,15 +59,5 @@
     <ClInclude Include="..\..\Source\ProjectAutoman\ProjectAutomanGameMode.h">
       <Filter>Source\ProjectAutoman</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\Source\ProjectAutoman\PlayerCharacter.h">
-      <Filter>Source\ProjectAutoman</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\Source\ProjectAutoman\PlayerCharacter.cpp">
-      <Filter>Source\ProjectAutoman</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>
