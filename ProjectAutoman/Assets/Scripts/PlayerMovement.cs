@@ -11,7 +11,12 @@ public class PlayerMovement : MonoBehaviour
     float dec = 0.5f;
     float frc = 0.046875f;
     float topSpeed = 6.0f;
-
+    float jumpHeight = 6.5f;
+    float slope = 0.125f;
+    float slpRollUp = 0.078125f;
+    float slpRollDown = 0.3125f;
+    float fall = 2.5f;
+    float gsp = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -53,5 +58,10 @@ public class PlayerMovement : MonoBehaviour
         //Draw wall collision sensors
         Debug.DrawRay(midSensorStart.position, Vector2.left * horizSensorLength, Color.magenta);
         Debug.DrawRay(midSensorStart.position, Vector2.right * horizSensorLength, Color.red);
+    }
+
+    void MoveHorizontal()
+    {
+
     }
 }
