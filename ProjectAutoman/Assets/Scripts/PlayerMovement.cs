@@ -7,6 +7,12 @@ public class PlayerMovement : MonoBehaviour
     public Transform xyPos, rightSensorStart, leftSensorStart, midSensorStart;
     public float vertSensorLength, horizSensorLength;
 
+    float acc = 0.046875f;
+    float dec = 0.5f;
+    float frc = 0.046875f;
+    float topSpeed = 6.0f;
+
+
     // Start is called before the first frame update
     void Start()
     {
