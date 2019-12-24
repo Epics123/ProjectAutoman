@@ -32,10 +32,12 @@ public class PlayerMovement : MonoBehaviour
     RaycastHit2D eSensor;
     RaycastHit2D fSensor;
 
+    public Transform tmp;
+
     // Start is called before the first frame update
     void Start()
     {
-
+  
     }
 
     // Update is called once per frame
