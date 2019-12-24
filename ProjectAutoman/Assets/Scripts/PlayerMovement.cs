@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Transform xyPos, rightSensorStart, leftSensorStart, midSensorStart;
+    public Transform rightSensorStart, leftSensorStart, midSensorStart;
     public float vertSensorLength, horizSensorLength;
 
     float acc = 0.046875f;
@@ -17,10 +17,13 @@ public class PlayerMovement : MonoBehaviour
     float slpRollDown = 0.3125f;
     float fall = 2.5f;
     float gsp = 0.0f;
+    float grv = 0.21875f;
 
-    bool grounded = false;
+    public bool grounded = false;
 
     public float xsp, ysp;
+
+    const float MAX_FALL_SPEED = 16f;
 
     RaycastHit2D aSensor;
     RaycastHit2D bSensor;
@@ -44,10 +47,12 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         CheckCollisions();
+        CheckMovement();
     }
 
     void CheckCollisions()
     {
+        //Update sensors
         aSensor = Physics2D.Raycast(leftSensorStart.position, Vector2.down, vertSensorLength);
         bSensor = Physics2D.Raycast(rightSensorStart.position, Vector2.down, vertSensorLength);
         cSensor = Physics2D.Raycast(leftSensorStart.position, Vector2.up, vertSensorLength);
@@ -55,8 +60,10 @@ public class PlayerMovement : MonoBehaviour
         eSensor = Physics2D.Raycast(midSensorStart.position, Vector2.left, horizSensorLength);
         fSensor = Physics2D.Raycast(midSensorStart.position, Vector2.right, horizSensorLength);
 
+        //Check for ground collision
         CheckGround(aSensor, bSensor);
 
+        //Draw sensors in editor
         DrawSensors();
     }
 
@@ -69,6 +76,27 @@ public class PlayerMovement : MonoBehaviour
 
         return grounded;
     }
+
+    void CheckFall()
+    {
+        if (!grounded)
+        {
+            ysp -= grv;
+            if (ysp < -MAX_FALL_SPEED)
+                ysp = -MAX_FALL_SPEED;
+        }
+        else
+            ysp = 0f;
+    }
+
+    void CheckMovement()
+    {
+        CheckFall();
+        MoveHorizontal();
+        MoveVertical();
+        UpdatePosition();
+    }
+
 
     void DrawSensors()
     {
@@ -86,6 +114,16 @@ public class PlayerMovement : MonoBehaviour
     void MoveHorizontal()
     {
 
+    }
+
+    void MoveVertical()
+    {
+        
+    }
+
+    void UpdatePosition()
+    {
+        transform.position = transform.position + new Vector3(xsp, ysp, 0);
     }
 
 
