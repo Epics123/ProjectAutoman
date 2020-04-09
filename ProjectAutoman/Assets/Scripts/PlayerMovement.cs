@@ -7,23 +7,9 @@ public class PlayerMovement : MonoBehaviour
     public Transform rightSensorStart, leftSensorStart, midSensorStart;
     public float vertSensorLength, horizSensorLength;
 
-    float acc = 0.046875f;
-    float dec = 0.5f;
-    float frc = 0.046875f;
-    float topSpeed = 6.0f;
-    float jumpHeight = 6.5f;
-    float slope = 0.125f;
-    float slpRollUp = 0.078125f;
-    float slpRollDown = 0.3125f;
-    float fall = 2.5f;
-    float gsp = 0.0f;
-    float grv = 0.21875f;
-
     public bool grounded = false;
 
-    public float xsp, ysp;
-
-    const float MAX_FALL_SPEED = 16f;
+    public float xsp, ysp, gsp;
 
     RaycastHit2D aSensor;
     RaycastHit2D bSensor;
@@ -43,13 +29,15 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(grounded);
+        //Debug.Log(grounded);
     }
 
     void FixedUpdate()
     {
         CheckCollisions();
         CheckMovement();
+        UpdatePosition();
+        Debug.Log(gsp);
     }
 
     void CheckCollisions()
@@ -83,9 +71,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!grounded)
         {
-            ysp -= grv;
-            if (ysp < -MAX_FALL_SPEED)
-                ysp = -MAX_FALL_SPEED;
+            ysp -= Movement.grv;
+            if (ysp < -Movement.MAX_FALL_SPEED)
+                ysp = -Movement.MAX_FALL_SPEED;
         }
         else
             ysp = 0f;
@@ -96,7 +84,6 @@ public class PlayerMovement : MonoBehaviour
         CheckFall();
         MoveHorizontal();
         MoveVertical();
-        UpdatePosition();
     }
 
 
@@ -115,7 +102,45 @@ public class PlayerMovement : MonoBehaviour
 
     void MoveHorizontal()
     {
+        //Moving Left
+        if(Input.GetAxis("Horizontal") < 0)
+        {
+            if(gsp > 0)
+            {
+                gsp -= Movement.DECEL;
+                if (gsp <= 0)
+                    gsp = -0.5f;
+            }
+            else if(gsp > -Movement.TOP_SPEED)
+            {
+                gsp -= Movement.ACCEL;
+                if (gsp <= -Movement.TOP_SPEED)
+                    gsp = -Movement.TOP_SPEED;
+            }
+        }
 
+        //Moving Right
+        if(Input.GetAxis("Horizontal") > 0)
+        {
+            if(gsp < 0)
+            {
+                gsp += Movement.DECEL;
+                if (gsp >= 0)
+                    gsp = 0.5f;
+            }
+            else if(gsp < Movement.TOP_SPEED)
+            {
+                gsp += Movement.ACCEL;
+                if (gsp >= Movement.TOP_SPEED)
+                    gsp = Movement.TOP_SPEED;
+            }
+        }
+
+        //No Horizontal Input
+        if(Input.GetAxis("Horizontal") == 0)
+        {
+            gsp -= Mathf.Min(Mathf.Abs(gsp), Movement.FRC) * Mathf.Sign(gsp);
+        }
     }
 
     void MoveVertical()
@@ -123,10 +148,12 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    void UpdatePosition()
+    void UpdatePosition() 
     {
-        transform.position = transform.position + new Vector3(xsp, ysp, 0);
-    }
+        xsp = Movement.UpdateHorizontalSpeed(gsp, 0);
+        ysp = Movement.UpdateVerticalSpeed(gsp, 0);
 
+        transform.Translate(new Vector3(xsp * Time.deltaTime, ysp * Time.deltaTime));
+    }
 
 }
