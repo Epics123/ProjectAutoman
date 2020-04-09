@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!grounded)
         {
-            ysp -= Movement.grv;
+            ysp -= Movement.GRV;
             if (ysp < -Movement.MAX_FALL_SPEED)
                 ysp = -Movement.MAX_FALL_SPEED;
         }
@@ -150,8 +150,8 @@ public class PlayerMovement : MonoBehaviour
 
     void UpdatePosition() 
     {
-        xsp = Movement.UpdateHorizontalSpeed(gsp, 0);
-        ysp = Movement.UpdateVerticalSpeed(gsp, 0);
+        xsp = Movement.UpdateHorizontalSpeed(gsp, transform.rotation.z);
+        ysp = Movement.UpdateVerticalSpeed(gsp, transform.rotation.z);
 
         transform.Translate(new Vector3(xsp * Time.deltaTime, ysp * Time.deltaTime));
     }
